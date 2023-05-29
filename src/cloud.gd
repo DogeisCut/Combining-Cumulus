@@ -29,7 +29,6 @@ func set_size(to: int):
 	$Graphics/BarComponent.set_amount(size)
 
 var fusing:=false
-var killme:=false
 
 func move():
 	if Input.is_action_just_pressed("down"):
@@ -76,6 +75,7 @@ func move_and_check(dir: Vector2i):
 			$RayCast2D.force_raycast_update()
 		move_max += 1
 	$Graphics.global_position = old_pos
+
 func after_move():
 	if tween:
 		tween.kill()
@@ -92,7 +92,7 @@ func after_move():
 			button.activate()
 
 func queue_freeable():
-	if fusing or killme:
+	if fusing:
 		queue_free()
 
 func check_for_clouds():
@@ -124,7 +124,6 @@ func check_for_flowers():
 	for plant in leaving_plants:
 		if plant.satisfed:
 			plant.set_satisfied(false)
-	
 
 func update_overlapping_clouds():
 	overlapping_clouds = []
@@ -133,6 +132,7 @@ func update_overlapping_clouds():
 	for cloud in clouds:
 		if cloud.tile_pos == tile_pos:
 			overlapping_clouds.append(cloud)
+
 func update_overlapping_plants():
 	leaving_plants = overlapping_plants.duplicate()
 	overlapping_plants = []
@@ -141,6 +141,7 @@ func update_overlapping_plants():
 		if plant.tile_pos == tile_pos:
 			overlapping_plants.append(plant)
 			leaving_plants.erase(plant)
+
 func update_overlapping_redirectors():
 	overlapping_redirectors = []
 	var redirectors = get_tree().get_nodes_in_group("Redirector")
@@ -148,6 +149,7 @@ func update_overlapping_redirectors():
 	for redirector in redirectors:
 		if redirector.tile_pos == tile_pos:
 			overlapping_redirectors.append(redirector)
+
 func update_overlapping_buttons():
 	overlapping_buttons = []
 	var buttons = get_tree().get_nodes_in_group("Button")
