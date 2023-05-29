@@ -35,17 +35,10 @@ func activate():
 		$Circle3.modulate = Color(0.59215688705444, 0.92549020051956, 0.81568628549576)
 		$LineClip/Line2D.default_color = Color(0.59215688705444, 0.92549020051956, 0.81568628549576)
 		if get_node_or_null(target):
-			if enable:
-				if get_node(target).has_method("button_activate"):
-					get_node(target).button_activate()
-				else:
-					push_warning("Target node has no activate function, showing...")
-					get_node(target).show()
+			if get_node(target).has_method("set_enabled"):
+				get_node(target).set_enabled(enable)
 			else:
-				if get_node(target).has_method("button_deactivate"):
-					get_node(target).button_deactivate()
-				else:
-					push_warning("Target node has no deactivate function, hiding...")
-					get_node(target).hide()
+				push_warning("Target node has no activate function, setting visibility...")
+				get_node(target).visible = enable
 		else:
 			push_error("No target on button. What are you doing?")
