@@ -64,13 +64,13 @@ func move_and_check(dir: Vector2i):
 				continue
 			redirector.redirect()
 			match(redirector.direction):
-				0:
+				Redirector.Direction.UP:
 					dir = Vector2i(0,-1)
-				1:
+				Redirector.Direction.RIGHT:
 					dir = Vector2i(1,0)
-				2:
+				Redirector.Direction.DOWN:
 					dir = Vector2i(0,1)
-				3:
+				Redirector.Direction.LEFT:
 					dir = Vector2i(-1,0)
 			$RayCast2D.target_position = Vector2(dir*TILESIZE)
 			$RayCast2D.force_raycast_update()

@@ -129,23 +129,23 @@ wanted_rain_amount = 1
 
 [node name="Redirector" parent="." instance=ExtResource("7_ua7s7")]
 position = Vector2(0, 64)
-direction = 3
+direction = 270
 
 [node name="Redirector3" parent="." instance=ExtResource("7_ua7s7")]
 position = Vector2(-320, 0)
-direction = 2
+direction = 180
 
 [node name="Redirector4" parent="." instance=ExtResource("7_ua7s7")]
 position = Vector2(-128, 64)
-direction = 1
+direction = 90
 
 [node name="Redirector5" parent="." instance=ExtResource("7_ua7s7")]
 position = Vector2(-128, 0)
-direction = 3
+direction = 270
 
 [node name="Redirector6" parent="." instance=ExtResource("7_ua7s7")]
 position = Vector2(-192, 0)
-direction = 3
+direction = 270
 
 [node name="WaterButton" parent="." instance=ExtResource("8_5a0y4")]
 position = Vector2(0, 128)

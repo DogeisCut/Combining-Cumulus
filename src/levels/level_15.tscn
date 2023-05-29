@@ -112,7 +112,7 @@ wanted_rain_amount = 3
 
 [node name="Redirector" parent="." instance=ExtResource("7_tqta3")]
 position = Vector2(0, -128)
-direction = 3
+direction = 270
 
 [node name="Redirector2" parent="." instance=ExtResource("7_tqta3")]
 position = Vector2(0, -256)

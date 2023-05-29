@@ -147,27 +147,27 @@ position = Vector2(576, 320)
 
 [node name="Redirector" parent="." instance=ExtResource("7_xtckh")]
 position = Vector2(128, 0)
-direction = 2
+direction = 180
 
 [node name="Redirector2" parent="." instance=ExtResource("7_xtckh")]
 position = Vector2(128, 64)
-direction = 2
+direction = 180
 
 [node name="Redirector3" parent="." instance=ExtResource("7_xtckh")]
 position = Vector2(320, 64)
-direction = 2
+direction = 180
 
 [node name="Redirector4" parent="." instance=ExtResource("7_xtckh")]
 position = Vector2(512, 64)
-direction = 2
+direction = 180
 
 [node name="Redirector5" parent="." instance=ExtResource("7_xtckh")]
 position = Vector2(320, 0)
-direction = 2
+direction = 180
 
 [node name="Redirector6" parent="." instance=ExtResource("7_xtckh")]
 position = Vector2(512, 0)
-direction = 2
+direction = 180
 
 [node name="WaterButton" parent="." instance=ExtResource("8_ud1dj")]
 position = Vector2(128, 192)
