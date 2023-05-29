@@ -7,8 +7,6 @@ var satisfed := false: set = set_satisfied
 
 var tile_pos: Vector2i
 
-var overlapping_clouds : Array[Area2D]
-
 func set_satisfied(to: bool):
 	if satisfed != to:
 		$Graphics/Glow.visible = to
