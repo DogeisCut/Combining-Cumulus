@@ -1,0 +1,212 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2bprewsse53c"]
+
+[ext_resource type="Texture2D" uid="uid://ugvrbfmara6r" path="res://assets/level_complete.svg" id="1_1buim"]
+[ext_resource type="Script" path="res://src/UI/win_screen.gd" id="1_bs5ou"]
+[ext_resource type="Theme" uid="uid://cftb8dv1qpros" path="res://src/UI/theme.tres" id="2_4fjvf"]
+[ext_resource type="AudioStream" uid="uid://b0wlhmm0wknym" path="res://assets/sound/win.wav" id="3_eyyha"]
+[ext_resource type="Texture2D" uid="uid://4ecxinuyak5h" path="res://assets/enter.png" id="4_58hbi"]
+
+[sub_resource type="Animation" id="Animation_7tjd4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.470588)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WinSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/LevelComplete:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/Button:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xxlyu"]
+resource_name = "win"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 0.470588)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WinSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/LevelComplete:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1.2, 1.4, 1.5, 2),
+"transitions": PackedFloat32Array(1, -2, -2, 0.5, 0.5, 2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05), Vector2(1.5, 1.5), Vector2(1, 1), Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/Button:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w32q0"]
+_data = {
+"RESET": SubResource("Animation_7tjd4"),
+"win": SubResource("Animation_xxlyu")
+}
+
+[node name="WinScreen" type="CanvasLayer"]
+layer = 2
+visible = false
+script = ExtResource("1_bs5ou")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+theme = ExtResource("2_4fjvf")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+color = Color(0, 0, 0, 0.470588)
+
+[node name="LevelComplete" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.167
+anchor_top = 0.099
+anchor_right = 0.833
+anchor_bottom = 0.668
+offset_left = -0.384018
+offset_top = -0.152008
+offset_right = 0.383911
+offset_bottom = -0.864014
+pivot_offset = Vector2(384, 184)
+texture = ExtResource("1_1buim")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.222
+anchor_top = 0.691
+anchor_right = 0.778
+anchor_bottom = 0.901
+offset_left = 0.255981
+offset_top = 0.231964
+offset_right = -0.256042
+offset_bottom = 0.151001
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("2_4fjvf")
+text = "Next Level"
+icon = ExtResource("4_58hbi")
+icon_alignment = 2
+
+[node name="WinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_eyyha")
+bus = &"FadedSounds"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w32q0")
+}
+
+[connection signal="resized" from="Control/LevelComplete" to="." method="_on_level_complete_resized"]
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

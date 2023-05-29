@@ -1,0 +1,179 @@
+[gd_scene load_steps=9 format=3 uid="uid://dshscw2m0e1l"]
+
+[ext_resource type="Theme" uid="uid://cftb8dv1qpros" path="res://src/UI/theme.tres" id="1_c5ucg"]
+[ext_resource type="Texture2D" uid="uid://dnnyvu10vwk1c" path="res://assets/logo.svg" id="1_pp0q8"]
+[ext_resource type="Script" path="res://src/UI/main_menu.gd" id="2_cn7wp"]
+[ext_resource type="Texture2D" uid="uid://l4r8kiipdg7a" path="res://assets/cloud.png" id="3_6mstx"]
+[ext_resource type="PackedScene" uid="uid://ci5jd70p21sxd" path="res://src/tile.tscn" id="5_8v6ow"]
+[ext_resource type="PackedScene" uid="uid://c8ydlif4mdiaq" path="res://src/bridge.tscn" id="6_5pfjy"]
+[ext_resource type="PackedScene" uid="uid://b5ejuhb5tx8mm" path="res://src/plant.tscn" id="7_ambde"]
+[ext_resource type="PackedScene" uid="uid://bfr10uj4wx3wh" path="res://src/cloud.tscn" id="8_0jk8a"]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 328)
+
+[node name="Layer" type="CanvasLayer" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Layer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Layer/SubViewportContainer"]
+disable_3d = true
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(1152, 648)
+size_2d_override = Vector2i(1152, 648)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="MainMenu" type="Control" parent="Layer/SubViewportContainer/SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_c5ucg")
+script = ExtResource("2_cn7wp")
+
+[node name="TextureRect" type="TextureRect" parent="Layer/SubViewportContainer/SubViewport/MainMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.074
+anchor_right = 1.0
+anchor_bottom = 0.568
+offset_top = 0.0480003
+offset_bottom = -0.0640259
+grow_horizontal = 2
+texture = ExtResource("1_pp0q8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="Layer/SubViewportContainer/SubViewport/MainMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.222
+anchor_top = 0.691
+anchor_right = 0.778
+anchor_bottom = 0.889
+offset_left = 0.255981
+offset_top = 0.231964
+offset_right = -0.256042
+offset_bottom = -0.0720215
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+text = "Play"
+
+[node name="Tiles" type="Node2D" parent="Layer/SubViewportContainer/SubViewport"]
+y_sort_enabled = true
+
+[node name="Tile" parent="Layer/SubViewportContainer/SubViewport/Tiles" instance=ExtResource("5_8v6ow")]
+position = Vector2(96, 544)
+
+[node name="Tile2" parent="Layer/SubViewportContainer/SubViewport/Tiles" instance=ExtResource("5_8v6ow")]
+position = Vector2(96, 480)
+
+[node name="Tile3" parent="Layer/SubViewportContainer/SubViewport/Tiles" instance=ExtResource("5_8v6ow")]
+position = Vector2(160, 480)
+
+[node name="Tile10" parent="Layer/SubViewportContainer/SubViewport/Tiles" instance=ExtResource("5_8v6ow")]
+position = Vector2(160, 416)
+
+[node name="Tile11" parent="Layer/SubViewportContainer/SubViewport/Tiles" instance=ExtResource("5_8v6ow")]
+position = Vector2(32, 480)
+
+[node name="Tile12" parent="Layer/SubViewportContainer/SubViewport/Tiles" instance=ExtResource("5_8v6ow")]
+position = Vector2(32, 544)
+
+[node name="Tile13" parent="Layer/SubViewportContainer/SubViewport/Tiles" instance=ExtResource("5_8v6ow")]
+position = Vector2(32, 608)
+
+[node name="Tile14" parent="Layer/SubViewportContainer/SubViewport/Tiles" instance=ExtResource("5_8v6ow")]
+position = Vector2(1120, 544)
+
+[node name="Tile15" parent="Layer/SubViewportContainer/SubViewport/Tiles" instance=ExtResource("5_8v6ow")]
+position = Vector2(32, 224)
+
+[node name="Tile16" parent="Layer/SubViewportContainer/SubViewport/Tiles" instance=ExtResource("5_8v6ow")]
+position = Vector2(96, 224)
+
+[node name="Tile17" parent="Layer/SubViewportContainer/SubViewport/Tiles" instance=ExtResource("5_8v6ow")]
+position = Vector2(96, 288)
+
+[node name="Tile18" parent="Layer/SubViewportContainer/SubViewport/Tiles" instance=ExtResource("5_8v6ow")]
+position = Vector2(1120, 152)
+
+[node name="Tile21" parent="Layer/SubViewportContainer/SubViewport/Tiles" instance=ExtResource("5_8v6ow")]
+position = Vector2(928, 608)
+
+[node name="Tile22" parent="Layer/SubViewportContainer/SubViewport/Tiles" instance=ExtResource("5_8v6ow")]
+position = Vector2(224, 608)
+
+[node name="Tile19" parent="Layer/SubViewportContainer/SubViewport/Tiles" instance=ExtResource("5_8v6ow")]
+position = Vector2(1056, 88)
+
+[node name="Tile20" parent="Layer/SubViewportContainer/SubViewport/Tiles" instance=ExtResource("5_8v6ow")]
+position = Vector2(1120, 88)
+
+[node name="Tile4" parent="Layer/SubViewportContainer/SubViewport/Tiles" instance=ExtResource("5_8v6ow")]
+position = Vector2(160, 544)
+
+[node name="Tile5" parent="Layer/SubViewportContainer/SubViewport/Tiles" instance=ExtResource("5_8v6ow")]
+position = Vector2(992, 544)
+
+[node name="Tile6" parent="Layer/SubViewportContainer/SubViewport/Tiles" instance=ExtResource("5_8v6ow")]
+position = Vector2(992, 480)
+
+[node name="Tile7" parent="Layer/SubViewportContainer/SubViewport/Tiles" instance=ExtResource("5_8v6ow")]
+position = Vector2(1056, 480)
+
+[node name="Tile8" parent="Layer/SubViewportContainer/SubViewport/Tiles" instance=ExtResource("5_8v6ow")]
+position = Vector2(1056, 544)
+
+[node name="Tile9" parent="Layer/SubViewportContainer/SubViewport/Tiles" instance=ExtResource("5_8v6ow")]
+position = Vector2(1056, 352)
+
+[node name="Bridge" parent="Layer/SubViewportContainer/SubViewport" instance=ExtResource("6_5pfjy")]
+position = Vector2(1056, 416)
+enabled = true
+
+[node name="Plant" parent="Layer/SubViewportContainer/SubViewport" instance=ExtResource("7_ambde")]
+position = Vector2(96, 480)
+
+[node name="Cloud" parent="Layer/SubViewportContainer/SubViewport" instance=ExtResource("8_0jk8a")]
+position = Vector2(1056, 344)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Layer/SubViewportContainer/SubViewport"]
+z_index = -1652
+position = Vector2(-872, 304)
+amount = 512
+lifetime = 30.0
+preprocess = 20.0
+texture = ExtResource("3_6mstx")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1000)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 80.81
+initial_velocity_max = 181.82
+scale_amount_min = 0.2
+
+[node name="Polygon2D" type="Polygon2D" parent="Layer/SubViewportContainer/SubViewport"]
+z_index = -999
+z_as_relative = false
+position = Vector2(560, 272)
+color = Color(0.450203, 0.695263, 0.90625, 1)
+polygon = PackedVector2Array(-680, 136, -576, 8, -432, -120, -296, 48, -208, -32, -32, 160, 104.363, 47.1479, 200, -32, 248, -112, 344, -216, 432, -88, 536, -144, 648, -32, 744, 48, 912, -32, 1088, -104, 1328, -312, 1552, -64, 1696, 128, 1880, 48, 2120, 264, 2632, 1128, -2000, 1152, -1824, 184, -1640, -72, -1496, 48, -1408, 168, -1232, -16, -1016, 112, -864, 32)
+
+[connection signal="pressed" from="Layer/SubViewportContainer/SubViewport/MainMenu/Button" to="Layer/SubViewportContainer/SubViewport/MainMenu" method="_on_button_pressed"]

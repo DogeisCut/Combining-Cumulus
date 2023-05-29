@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsa64a0qxq433"]
+
+[ext_resource type="AudioStream" uid="uid://ng6ew8b3ccqd" path="res://assets/music/Cloudy.ogg" id="1_5wiu7"]
+
+[node name="Music" type="AudioStreamPlayer"]
+stream = ExtResource("1_5wiu7")
+volume_db = -5.0
+autoplay = true

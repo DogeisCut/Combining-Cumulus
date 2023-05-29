@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8ydlif4mdiaq"]
+
+[ext_resource type="Script" path="res://src/bridge.gd" id="1_mvsbj"]
+
+[sub_resource type="Gradient" id="Gradient_vs8ry"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.048951, 0.286713, 0.818182)
+colors = PackedColorArray(0, 0, 0, 1, 0.765625, 0.765625, 0.765625, 1, 1, 1, 1, 1, 0.772497, 0.939539, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j340q"]
+gradient = SubResource("Gradient_vs8ry")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+repeat = 1
+
+[sub_resource type="Gradient" id="Gradient_f01v7"]
+offsets = PackedFloat32Array(0, 0.412587, 0.482517, 0.958042, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pt2rr"]
+gradient = SubResource("Gradient_f01v7")
+width = 200
+height = 200
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0.5, 0.5)
+repeat = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qayw6"]
+size = Vector2(64, 64)
+
+[node name="Bridge" type="Node2D"]
+script = ExtResource("1_mvsbj")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+texture_repeat = 2
+color = Color(1, 0.901961, 0.419608, 1)
+texture = SubResource("GradientTexture2D_j340q")
+texture_scale = Vector2(6, 6)
+polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+texture_repeat = 2
+texture = SubResource("GradientTexture2D_pt2rr")
+texture_scale = Vector2(15, 15)
+invert_enabled = true
+invert_border = 3.0
+polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_qayw6")
+disabled = true

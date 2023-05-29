@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0aufm22l476m"]
+
+[ext_resource type="Script" path="res://src/levels/level.gd" id="1_t5lap"]
+[ext_resource type="PackedScene" uid="uid://d2bprewsse53c" path="res://src/UI/win_screen.tscn" id="2_24liw"]
+[ext_resource type="PackedScene" uid="uid://ci5jd70p21sxd" path="res://src/tile.tscn" id="2_fdstb"]
+[ext_resource type="PackedScene" uid="uid://cfwi3mmpgivs6" path="res://src/UI/move_counter.tscn" id="2_nm8us"]
+[ext_resource type="PackedScene" uid="uid://bfr10uj4wx3wh" path="res://src/cloud.tscn" id="4_wu8c3"]
+[ext_resource type="PackedScene" uid="uid://b5ejuhb5tx8mm" path="res://src/plant.tscn" id="5_5b8mp"]
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_t5lap")
+next_level = "res://src/levels/level_2.tscn"
+max_moves = 2
+
+[node name="MoveCounter" parent="." instance=ExtResource("2_nm8us")]
+
+[node name="WinScreen" parent="." instance=ExtResource("2_24liw")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(128, 32)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+z_index = -999
+z_as_relative = false
+position = Vector2(128, 32)
+color = Color(0.450203, 0.695263, 0.90625, 1)
+polygon = PackedVector2Array(-680, 136, -576, 8, -432, -120, -296, 48, -208, -32, -32, 160, 200, -32, 248, -112, 344, -216, 432, -88, 536, -144, 648, -32, 744, 48, 912, -32, 1088, -104, 1328, -312, 1552, -64, 1696, 128, 1880, 48, 2120, 264, 2632, 1128, -2000, 1152, -1824, 184, -1640, -72, -1496, 48, -1408, 168, -1232, -16, -1016, 112, -864, 32)
+
+[node name="Tiles" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Tile" parent="Tiles" instance=ExtResource("2_fdstb")]
+
+[node name="Tile2" parent="Tiles" instance=ExtResource("2_fdstb")]
+position = Vector2(64, 0)
+
+[node name="Tile3" parent="Tiles" instance=ExtResource("2_fdstb")]
+position = Vector2(128, 0)
+
+[node name="Tile4" parent="Tiles" instance=ExtResource("2_fdstb")]
+position = Vector2(192, 0)
+
+[node name="Tile5" parent="Tiles" instance=ExtResource("2_fdstb")]
+position = Vector2(256, 0)
+
+[node name="Tile6" parent="Tiles" instance=ExtResource("2_fdstb")]
+position = Vector2(256, 64)
+
+[node name="Tile7" parent="Tiles" instance=ExtResource("2_fdstb")]
+position = Vector2(192, 64)
+
+[node name="Tile8" parent="Tiles" instance=ExtResource("2_fdstb")]
+position = Vector2(128, 64)
+
+[node name="Tile9" parent="Tiles" instance=ExtResource("2_fdstb")]
+position = Vector2(64, 64)
+
+[node name="Tile10" parent="Tiles" instance=ExtResource("2_fdstb")]
+position = Vector2(0, 64)
+
+[node name="Cloud" parent="." instance=ExtResource("4_wu8c3")]
+
+[node name="Plant" parent="." instance=ExtResource("5_5b8mp")]
+position = Vector2(256, 64)

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci5jd70p21sxd"]
+
+[ext_resource type="Texture2D" uid="uid://v0fbuyx0ieyj" path="res://assets/tile.svg" id="1_php57"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hvibh"]
+size = Vector2(64, 64)
+
+[node name="Tile" type="Sprite2D"]
+z_index = -5
+z_as_relative = false
+y_sort_enabled = true
+texture = ExtResource("1_php57")
+offset = Vector2(0, 512)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_hvibh")

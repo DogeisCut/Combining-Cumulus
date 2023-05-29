@@ -1,0 +1,148 @@
+[gd_scene load_steps=11 format=3 uid="uid://cfwi3mmpgivs6"]
+
+[ext_resource type="Theme" uid="uid://cftb8dv1qpros" path="res://src/UI/theme.tres" id="1_ky1hv"]
+[ext_resource type="Script" path="res://src/UI/move_counter.gd" id="1_t3rpe"]
+[ext_resource type="Texture2D" uid="uid://cixinai7nwpc4" path="res://assets/restart.png" id="3_cr34v"]
+[ext_resource type="AudioStream" uid="uid://bxo8uyg1ij55a" path="res://assets/sound/swoosh.wav" id="4_uknr4"]
+[ext_resource type="Script" path="res://src/UI/move_sound.gd" id="5_124qd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ntwoo"]
+line_spacing = 0.0
+font_size = 80
+font_color = Color(0, 0, 0, 1)
+outline_size = 20
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 0.2)
+shadow_offset = Vector2(1, 10)
+
+[sub_resource type="Animation" id="Animation_4jggt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Button:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8as0q"]
+resource_name = "bump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yh0fs"]
+resource_name = "win"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pxtbp"]
+_data = {
+"RESET": SubResource("Animation_4jggt"),
+"bump": SubResource("Animation_8as0q"),
+"win": SubResource("Animation_yh0fs")
+}
+
+[node name="MoveCounter" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_t3rpe")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -284.0
+offset_right = 284.0
+offset_bottom = 104.0
+grow_horizontal = 2
+pivot_offset = Vector2(284, 52)
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("1_ky1hv")
+label_settings = SubResource("LabelSettings_ntwoo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 88.0
+focus_mode = 0
+theme = ExtResource("1_ky1hv")
+icon = ExtResource("3_cr34v")
+icon_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pxtbp")
+}
+
+[node name="MoveSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_uknr4")
+volume_db = -13.124
+pitch_scale = 2.0
+script = ExtResource("5_124qd")
+
+[connection signal="resized" from="Label" to="." method="_on_label_resized"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,143 @@
+[gd_scene load_steps=8 format=3 uid="uid://bw5k07tv67x63"]
+
+[ext_resource type="Script" path="res://src/levels/level.gd" id="1_vt6fu"]
+[ext_resource type="PackedScene" uid="uid://cfwi3mmpgivs6" path="res://src/UI/move_counter.tscn" id="2_4w2ox"]
+[ext_resource type="PackedScene" uid="uid://d2bprewsse53c" path="res://src/UI/win_screen.tscn" id="3_vs0xj"]
+[ext_resource type="PackedScene" uid="uid://ci5jd70p21sxd" path="res://src/tile.tscn" id="4_fdycn"]
+[ext_resource type="PackedScene" uid="uid://bfr10uj4wx3wh" path="res://src/cloud.tscn" id="5_pg2ga"]
+[ext_resource type="PackedScene" uid="uid://b5ejuhb5tx8mm" path="res://src/plant.tscn" id="6_eilei"]
+[ext_resource type="PackedScene" uid="uid://ki2waaikby22" path="res://src/redirector.tscn" id="7_yieg2"]
+
+[node name="Level16" type="Node2D"]
+script = ExtResource("1_vt6fu")
+next_level = "res://src/levels/level_17.tscn"
+max_moves = 1
+
+[node name="MoveCounter" parent="." instance=ExtResource("2_4w2ox")]
+
+[node name="WinScreen" parent="." instance=ExtResource("3_vs0xj")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(64, 32)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+z_index = -999
+z_as_relative = false
+position = Vector2(64, 32)
+color = Color(0.450203, 0.695263, 0.90625, 1)
+polygon = PackedVector2Array(-680, 136, -576, 8, -432, -120, -296, 48, -208, -32, -32, 160, 200, -32, 248, -112, 344, -216, 432, -88, 536, -144, 648, -32, 744, 48, 912, -32, 1088, -104, 1328, -312, 1552, -64, 1696, 128, 1880, 48, 2120, 264, 2632, 1128, -2000, 1152, -1824, 184, -1640, -72, -1496, 48, -1408, 168, -1232, -16, -1016, 112, -864, 32)
+
+[node name="Tiles" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Tile" parent="Tiles" instance=ExtResource("4_fdycn")]
+
+[node name="Tile2" parent="Tiles" instance=ExtResource("4_fdycn")]
+position = Vector2(64, 0)
+
+[node name="Tile3" parent="Tiles" instance=ExtResource("4_fdycn")]
+position = Vector2(128, 0)
+
+[node name="Tile7" parent="Tiles" instance=ExtResource("4_fdycn")]
+position = Vector2(192, 0)
+
+[node name="Tile8" parent="Tiles" instance=ExtResource("4_fdycn")]
+position = Vector2(256, 0)
+
+[node name="Tile9" parent="Tiles" instance=ExtResource("4_fdycn")]
+position = Vector2(64, -128)
+
+[node name="Tile10" parent="Tiles" instance=ExtResource("4_fdycn")]
+position = Vector2(64, -64)
+
+[node name="Tile11" parent="Tiles" instance=ExtResource("4_fdycn")]
+position = Vector2(-64, 0)
+
+[node name="Tile12" parent="Tiles" instance=ExtResource("4_fdycn")]
+position = Vector2(-128, 0)
+
+[node name="Tile4" parent="Tiles" instance=ExtResource("4_fdycn")]
+position = Vector2(0, 64)
+
+[node name="Tile5" parent="Tiles" instance=ExtResource("4_fdycn")]
+position = Vector2(64, 64)
+
+[node name="Tile6" parent="Tiles" instance=ExtResource("4_fdycn")]
+position = Vector2(128, 64)
+
+[node name="Tile13" parent="Tiles" instance=ExtResource("4_fdycn")]
+position = Vector2(0, 128)
+
+[node name="Tile14" parent="Tiles" instance=ExtResource("4_fdycn")]
+position = Vector2(64, 128)
+
+[node name="Tile15" parent="Tiles" instance=ExtResource("4_fdycn")]
+position = Vector2(128, 128)
+
+[node name="Tile16" parent="Tiles" instance=ExtResource("4_fdycn")]
+position = Vector2(0, 192)
+
+[node name="Tile19" parent="Tiles" instance=ExtResource("4_fdycn")]
+position = Vector2(-128, 192)
+
+[node name="Tile20" parent="Tiles" instance=ExtResource("4_fdycn")]
+position = Vector2(-64, 192)
+
+[node name="Tile21" parent="Tiles" instance=ExtResource("4_fdycn")]
+position = Vector2(256, 192)
+
+[node name="Tile22" parent="Tiles" instance=ExtResource("4_fdycn")]
+position = Vector2(192, 192)
+
+[node name="Tile17" parent="Tiles" instance=ExtResource("4_fdycn")]
+position = Vector2(64, 192)
+
+[node name="Tile18" parent="Tiles" instance=ExtResource("4_fdycn")]
+position = Vector2(128, 192)
+
+[node name="Cloud" parent="." instance=ExtResource("5_pg2ga")]
+
+[node name="Cloud2" parent="." instance=ExtResource("5_pg2ga")]
+position = Vector2(64, 0)
+
+[node name="Cloud3" parent="." instance=ExtResource("5_pg2ga")]
+position = Vector2(128, 0)
+
+[node name="Redirector" parent="." instance=ExtResource("7_yieg2")]
+position = Vector2(64, 0)
+
+[node name="Redirector2" parent="." instance=ExtResource("7_yieg2")]
+direction = 3
+
+[node name="Redirector3" parent="." instance=ExtResource("7_yieg2")]
+position = Vector2(128, 0)
+direction = 1
+
+[node name="Redirector4" parent="." instance=ExtResource("7_yieg2")]
+position = Vector2(64, 128)
+direction = 2
+
+[node name="Redirector5" parent="." instance=ExtResource("7_yieg2")]
+position = Vector2(0, 128)
+direction = 2
+
+[node name="Redirector6" parent="." instance=ExtResource("7_yieg2")]
+position = Vector2(128, 128)
+direction = 2
+
+[node name="Redirector7" parent="." instance=ExtResource("7_yieg2")]
+position = Vector2(128, 192)
+direction = 1
+
+[node name="Redirector8" parent="." instance=ExtResource("7_yieg2")]
+position = Vector2(0, 192)
+direction = 3
+
+[node name="Plant" parent="." instance=ExtResource("6_eilei")]
+position = Vector2(64, 192)
+
+[node name="Plant2" parent="." instance=ExtResource("6_eilei")]
+position = Vector2(-128, 192)
+
+[node name="Plant3" parent="." instance=ExtResource("6_eilei")]
+position = Vector2(264, 192)

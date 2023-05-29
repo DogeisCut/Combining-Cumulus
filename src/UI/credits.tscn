@@ -1,0 +1,108 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4l8n3tvsspi4"]
+
+[ext_resource type="Texture2D" uid="uid://dnnyvu10vwk1c" path="res://assets/logo.svg" id="1_nv2h6"]
+[ext_resource type="Theme" uid="uid://cftb8dv1qpros" path="res://src/UI/theme.tres" id="2_lx4c3"]
+[ext_resource type="Texture2D" uid="uid://l4r8kiipdg7a" path="res://assets/cloud.png" id="3_5wvgc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5lh2b"]
+line_spacing = 0.0
+font_size = 80
+font_color = Color(0, 0, 0, 1)
+outline_size = 20
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 0.2)
+shadow_offset = Vector2(1, 10)
+
+[sub_resource type="LabelSettings" id="LabelSettings_b5fge"]
+line_spacing = 0.0
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[node name="credits" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.494
+offset_bottom = -0.112
+grow_horizontal = 2
+texture = ExtResource("1_nv2h6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.174
+anchor_top = 0.531
+anchor_right = 0.833
+anchor_bottom = 0.691
+offset_left = -0.448013
+offset_top = -0.0880127
+offset_right = 0.383911
+offset_bottom = 0.231964
+grow_horizontal = 2
+pivot_offset = Vector2(284, 52)
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("2_lx4c3")
+text = "Thank you for playing!"
+label_settings = SubResource("LabelSettings_5lh2b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.167
+anchor_top = 0.704
+anchor_right = 0.833
+anchor_bottom = 1.0
+offset_left = -0.384018
+offset_top = -0.192047
+offset_right = 0.383911
+grow_horizontal = 2
+pivot_offset = Vector2(284, 52)
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("2_lx4c3")
+text = "Credits:
+font: Ubuntu-title
+sounds: various sources
+music: dogeiscut (Me) :)
+Made in 72 hours for Mini Jam 133: Fusion
+made with godot and love :)"
+label_settings = SubResource("LabelSettings_b5fge")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+z_index = -999
+z_as_relative = false
+position = Vector2(576, 320)
+color = Color(0.450203, 0.695263, 0.90625, 1)
+polygon = PackedVector2Array(-680, 136, -576, 8, -432, -120, -296, 48, -208, -32, -32, 160, 200, -32, 248, -112, 344, -216, 432, -88, 536, -144, 648, -32, 744, 48, 912, -32, 1088, -104, 1328, -312, 1552, -64, 1696, 128, 1880, 48, 2120, 264, 2632, 1128, -2000, 1152, -1824, 184, -1640, -72, -1496, 48, -1408, 168, -1232, -16, -1016, 112, -864, 32)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -1652
+position = Vector2(-736, 360)
+amount = 512
+lifetime = 30.0
+preprocess = 20.0
+texture = ExtResource("3_5wvgc")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1000)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 80.81
+initial_velocity_max = 181.82
+scale_amount_min = 0.2

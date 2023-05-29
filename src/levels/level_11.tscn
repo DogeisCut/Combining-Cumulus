@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://cnes42rrwmtff"]
+
+[ext_resource type="Script" path="res://src/levels/level.gd" id="1_2hyne"]
+[ext_resource type="PackedScene" uid="uid://cfwi3mmpgivs6" path="res://src/UI/move_counter.tscn" id="2_jg4mi"]
+[ext_resource type="PackedScene" uid="uid://d2bprewsse53c" path="res://src/UI/win_screen.tscn" id="3_3x44q"]
+[ext_resource type="PackedScene" uid="uid://ci5jd70p21sxd" path="res://src/tile.tscn" id="4_kte7x"]
+[ext_resource type="PackedScene" uid="uid://bfr10uj4wx3wh" path="res://src/cloud.tscn" id="5_31vsk"]
+[ext_resource type="PackedScene" uid="uid://b5ejuhb5tx8mm" path="res://src/plant.tscn" id="6_r0un5"]
+[ext_resource type="PackedScene" uid="uid://m6pp0f8vbp6v" path="res://src/water_button.tscn" id="7_j7ybv"]
+[ext_resource type="PackedScene" uid="uid://ki2waaikby22" path="res://src/redirector.tscn" id="8_pwfko"]
+[ext_resource type="PackedScene" uid="uid://c8ydlif4mdiaq" path="res://src/bridge.tscn" id="9_ugxsp"]
+
+[node name="Level11" type="Node2D"]
+script = ExtResource("1_2hyne")
+next_level = "res://src/levels/level_12.tscn"
+max_moves = 7
+
+[node name="MoveCounter" parent="." instance=ExtResource("2_jg4mi")]
+
+[node name="WinScreen" parent="." instance=ExtResource("3_3x44q")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(256, -64)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+z_index = -999
+z_as_relative = false
+position = Vector2(256, -64)
+color = Color(0.450203, 0.695263, 0.90625, 1)
+polygon = PackedVector2Array(-680, 136, -576, 8, -432, -120, -296, 48, -208, -32, -32, 160, 200, -32, 248, -112, 344, -216, 432, -88, 536, -144, 648, -32, 744, 48, 912, -32, 1088, -104, 1328, -312, 1552, -64, 1696, 128, 1880, 48, 2120, 264, 2632, 1128, -2000, 1152, -1824, 184, -1640, -72, -1496, 48, -1408, 168, -1232, -16, -1016, 112, -864, 32)
+
+[node name="Tiles" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Tile" parent="Tiles" instance=ExtResource("4_kte7x")]
+
+[node name="Tile8" parent="Tiles" instance=ExtResource("4_kte7x")]
+position = Vector2(0, -64)
+
+[node name="Tile2" parent="Tiles" instance=ExtResource("4_kte7x")]
+position = Vector2(64, 0)
+
+[node name="Tile3" parent="Tiles" instance=ExtResource("4_kte7x")]
+position = Vector2(128, 0)
+
+[node name="Tile4" parent="Tiles" instance=ExtResource("4_kte7x")]
+position = Vector2(192, 0)
+
+[node name="Tile6" parent="Tiles" instance=ExtResource("4_kte7x")]
+position = Vector2(384, 0)
+
+[node name="Tile7" parent="Tiles" instance=ExtResource("4_kte7x")]
+position = Vector2(448, 0)
+
+[node name="Tile5" parent="Tiles" instance=ExtResource("4_kte7x")]
+position = Vector2(256, 0)
+
+[node name="Tile10" parent="Tiles" instance=ExtResource("4_kte7x")]
+position = Vector2(256, -128)
+
+[node name="Tile12" parent="Tiles" instance=ExtResource("4_kte7x")]
+position = Vector2(512, 0)
+
+[node name="Tile13" parent="Tiles" instance=ExtResource("4_kte7x")]
+position = Vector2(512, -64)
+
+[node name="Tile11" parent="Tiles" instance=ExtResource("4_kte7x")]
+position = Vector2(320, 0)
+
+[node name="Cloud" parent="." instance=ExtResource("5_31vsk")]
+position = Vector2(384, 0)
+
+[node name="Plant" parent="." instance=ExtResource("6_r0un5")]
+position = Vector2(256, -128)
+
+[node name="WaterButton" parent="." instance=ExtResource("7_j7ybv")]
+position = Vector2(0, -64)
+target = NodePath("../Bridge")
+
+[node name="WaterButton2" parent="." instance=ExtResource("7_j7ybv")]
+position = Vector2(512, -64)
+target = NodePath("../Redirector")
+line_y = true
+
+[node name="Redirector" parent="." instance=ExtResource("8_pwfko")]
+position = Vector2(256, 0)
+enabled = false
+
+[node name="Bridge" parent="." instance=ExtResource("9_ugxsp")]
+position = Vector2(256, -64)

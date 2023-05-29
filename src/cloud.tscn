@@ -1,0 +1,159 @@
+[gd_scene load_steps=11 format=3 uid="uid://bfr10uj4wx3wh"]
+
+[ext_resource type="Script" path="res://src/cloud.gd" id="1_847vs"]
+[ext_resource type="Texture2D" uid="uid://bb5bk1f3rsjg6" path="res://assets/circle.png" id="1_lddrx"]
+[ext_resource type="PackedScene" uid="uid://cctk3mlexccpp" path="res://src/bar_component.tscn" id="3_lb0ee"]
+[ext_resource type="AudioStream" uid="uid://73ufuawvhkld" path="res://assets/sound/poof.wav" id="4_0eh2s"]
+
+[sub_resource type="Curve" id="Curve_e10gh"]
+_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_6xe2g"]
+max_value = 4.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.933735, 1), 0.0, 0.0, 0, 0, Vector2(1, 4), 43.2608, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_1334j"]
+offsets = PackedFloat32Array(0, 0.874074, 0.977778, 1)
+colors = PackedColorArray(0, 0.282353, 1, 0.709804, 0, 0.282353, 1, 0.709804, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_c8k12"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CloudCenter:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cukh7"]
+resource_name = "poof"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CloudCenter:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1.5, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3j62s"]
+_data = {
+"RESET": SubResource("Animation_c8k12"),
+"poof": SubResource("Animation_cukh7")
+}
+
+[node name="Cloud" type="Node2D" groups=["Cloud"]]
+script = ExtResource("1_847vs")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 64)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Poof" type="CPUParticles2D" parent="."]
+position = Vector2(0, -67)
+emitting = false
+amount = 64
+lifetime = 1.2
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+randomness = 0.75
+lifetime_randomness = 0.75
+draw_order = 1
+texture = ExtResource("1_lddrx")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 73.43
+initial_velocity_max = 147.25
+damping_min = 84.21
+damping_max = 120.0
+scale_amount_min = 0.08
+scale_amount_max = 0.08
+scale_amount_curve = SubResource("Curve_e10gh")
+
+[node name="Graphics" type="Node2D" parent="."]
+z_index = 5
+z_as_relative = false
+
+[node name="GPUParticles2D" type="CPUParticles2D" parent="Graphics"]
+position = Vector2(0, -67)
+amount = 64
+lifetime = 1.2
+preprocess = 5.0
+local_coords = true
+draw_order = 1
+texture = ExtResource("1_lddrx")
+emission_shape = 3
+emission_rect_extents = Vector2(32, 24)
+gravity = Vector2(0, 98)
+scale_amount_min = 0.01
+scale_amount_max = 0.01
+scale_amount_curve = SubResource("Curve_6xe2g")
+color_ramp = SubResource("Gradient_1334j")
+
+[node name="CloudCenter" type="Node2D" parent="Graphics"]
+position = Vector2(0, -67.264)
+
+[node name="Circle" type="Sprite2D" parent="Graphics/CloudCenter"]
+position = Vector2(0, 16)
+scale = Vector2(0.081, 0.081)
+texture = ExtResource("1_lddrx")
+
+[node name="Circle2" type="Sprite2D" parent="Graphics/CloudCenter"]
+position = Vector2(-24, 0)
+scale = Vector2(0.081, 0.081)
+texture = ExtResource("1_lddrx")
+
+[node name="Circle3" type="Sprite2D" parent="Graphics/CloudCenter"]
+position = Vector2(-3.8147e-06, -16)
+scale = Vector2(0.081, 0.081)
+texture = ExtResource("1_lddrx")
+
+[node name="Circle4" type="Sprite2D" parent="Graphics/CloudCenter"]
+position = Vector2(16, -8)
+scale = Vector2(0.081, 0.081)
+texture = ExtResource("1_lddrx")
+
+[node name="Circle8" type="Sprite2D" parent="Graphics/CloudCenter"]
+position = Vector2(24, 0)
+scale = Vector2(0.081, 0.081)
+texture = ExtResource("1_lddrx")
+
+[node name="Circle5" type="Sprite2D" parent="Graphics/CloudCenter"]
+position = Vector2(16, 8)
+scale = Vector2(0.081, 0.081)
+texture = ExtResource("1_lddrx")
+
+[node name="Circle6" type="Sprite2D" parent="Graphics/CloudCenter"]
+position = Vector2(-16, -8)
+scale = Vector2(0.081, 0.081)
+texture = ExtResource("1_lddrx")
+
+[node name="Circle7" type="Sprite2D" parent="Graphics/CloudCenter"]
+position = Vector2(-16, 8)
+scale = Vector2(0.081, 0.081)
+texture = ExtResource("1_lddrx")
+
+[node name="BarComponent" parent="Graphics" instance=ExtResource("3_lb0ee")]
+position = Vector2(0, 17)
+
+[node name="PoofSound" type="AudioStreamPlayer2D" parent="Graphics"]
+stream = ExtResource("4_0eh2s")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics"]
+libraries = {
+"": SubResource("AnimationLibrary_3j62s")
+}
