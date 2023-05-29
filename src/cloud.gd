@@ -61,16 +61,7 @@ func move_and_check(dir: Vector2i):
 		for redirector in overlapping_redirectors:
 			if !redirector.enabled:
 				continue
-			redirector.redirect()
-			match(redirector.direction):
-				Redirector.Direction.UP:
-					dir = Vector2i(0,-1)
-				Redirector.Direction.RIGHT:
-					dir = Vector2i(1,0)
-				Redirector.Direction.DOWN:
-					dir = Vector2i(0,1)
-				Redirector.Direction.LEFT:
-					dir = Vector2i(-1,0)
+			dir = redirector.redirect()
 			$RayCast2D.target_position = Vector2(dir*TILESIZE)
 			$RayCast2D.force_raycast_update()
 		move_max += 1

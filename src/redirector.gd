@@ -26,10 +26,22 @@ func update_enabledness():
 
 var tile_pos: Vector2i
 
-func redirect():
+## @returns: The direction that is being redirected in
+func redirect() -> Vector2i:
 	$Sound.play()
 	$AnimationPlayer.stop()
 	$AnimationPlayer.play("redirect")
+	match(direction):
+		Direction.UP:
+			return Vector2i.UP
+		Direction.RIGHT:
+			return Vector2i.RIGHT
+		Direction.DOWN:
+			return Vector2i.DOWN
+		Direction.LEFT:
+			return Vector2i.LEFT
+		_: # Will never happen because this is an exhaustive match
+			return Vector2.ZERO # satisfies the return type checker
 
 func set_direction(to: Direction):
 	$Graphics.rotation_degrees = to
