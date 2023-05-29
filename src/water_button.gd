@@ -27,13 +27,15 @@ func _ready():
 		$LineClip.global_position = get_node(target).global_position
 		$LineClip/Line2D.global_position = global_position
 
+const active_color = Color8(151, 236, 208)
+
 func activate():
 	if !activated:
 		activated = true
 		$Activate.play()
-		$Circle2.modulate = Color(0.59215688705444, 0.92549020051956, 0.81568628549576)
-		$Circle3.modulate = Color(0.59215688705444, 0.92549020051956, 0.81568628549576)
-		$LineClip/Line2D.default_color = Color(0.59215688705444, 0.92549020051956, 0.81568628549576)
+		$Circle2.modulate = active_color
+		$Circle3.modulate = active_color
+		$LineClip/Line2D.default_color = active_color
 		if get_node_or_null(target):
 			if get_node(target).has_method("set_enabled"):
 				get_node(target).set_enabled(enable)
