@@ -49,7 +49,7 @@ func move_and_check(dir: Vector2i):
 	$RayCast2D.target_position = Vector2(dir*TILESIZE)
 	var old_pos = global_position
 	var move_max: int = 0
-	while update_and_check() and move_max<999999999999:
+	while update_and_check() and move_max<999:
 		var trail = trail_scene.instantiate()
 		trail.global_position = global_position
 		trail.rotation = Vector2(dir).angle()
