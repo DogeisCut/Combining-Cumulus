@@ -89,7 +89,7 @@ func queue_freeable():
 func check_for_clouds():
 	update_overlapping_clouds()
 	for cloud in overlapping_clouds:
-		if !cloud.fusing and !fusing and cloud.tile_pos == tile_pos:
+		if !cloud.fusing and !fusing:
 			fusing = true
 			cloud.set_size(cloud.size+size+1)
 			cloud.get_node("Graphics/PoofSound").play()
