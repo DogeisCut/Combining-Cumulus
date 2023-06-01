@@ -1,20 +1,20 @@
-@tool
 extends Node2D
 class_name Redirector
 
-@export_enum("Up","Right","Down","Left") var direction: int : set = set_direction
+enum Direction {
+	UP = 0,
+	RIGHT = 90,
+	DOWN = 180,
+	LEFT = 270,
+}
+
+@export var direction: Direction : set = set_direction
 
 @export var enabled := true : set = set_enabled
 
 func set_enabled(to):
 	enabled = to
 	update_enabledness()
-
-func button_activate():
-	set_enabled(true)
-
-func button_deactivate():
-	set_enabled(false)
 
 func update_enabledness():
 	if enabled:
@@ -26,21 +26,25 @@ func update_enabledness():
 
 var tile_pos: Vector2i
 
-func redirect():
+## @returns: The direction that is being redirected in
+func redirect() -> Vector2i:
 	$Sound.play()
 	$AnimationPlayer.stop()
 	$AnimationPlayer.play("redirect")
+	match(direction):
+		Direction.UP:
+			return Vector2i.UP
+		Direction.RIGHT:
+			return Vector2i.RIGHT
+		Direction.DOWN:
+			return Vector2i.DOWN
+		Direction.LEFT:
+			return Vector2i.LEFT
+		_: # Will never happen because this is an exhaustive match
+			return Vector2.ZERO # satisfies the return type checker
 
-func set_direction(to):
-	match(to):
-		0:
-			$Graphics.rotation_degrees = 0
-		1:
-			$Graphics.rotation_degrees = 90
-		2:
-			$Graphics.rotation_degrees = 180
-		3:
-			$Graphics.rotation_degrees = 270
+func set_direction(to: Direction):
+	$Graphics.rotation_degrees = to
 	direction=to
 
 func _ready():

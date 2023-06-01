@@ -107,31 +107,31 @@ position = Vector2(128, 0)
 position = Vector2(64, 0)
 
 [node name="Redirector2" parent="." instance=ExtResource("7_yieg2")]
-direction = 3
+direction = 270
 
 [node name="Redirector3" parent="." instance=ExtResource("7_yieg2")]
 position = Vector2(128, 0)
-direction = 1
+direction = 90
 
 [node name="Redirector4" parent="." instance=ExtResource("7_yieg2")]
 position = Vector2(64, 128)
-direction = 2
+direction = 180
 
 [node name="Redirector5" parent="." instance=ExtResource("7_yieg2")]
 position = Vector2(0, 128)
-direction = 2
+direction = 180
 
 [node name="Redirector6" parent="." instance=ExtResource("7_yieg2")]
 position = Vector2(128, 128)
-direction = 2
+direction = 180
 
 [node name="Redirector7" parent="." instance=ExtResource("7_yieg2")]
 position = Vector2(128, 192)
-direction = 1
+direction = 90
 
 [node name="Redirector8" parent="." instance=ExtResource("7_yieg2")]
 position = Vector2(0, 192)
-direction = 3
+direction = 270
 
 [node name="Plant" parent="." instance=ExtResource("6_eilei")]
 position = Vector2(64, 192)
